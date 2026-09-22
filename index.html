@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://generativelanguage.googleapis.com; img-src 'self' data:; base-uri 'self'">
+<title>4NMNN - Sistema Inteligente by ZARATE</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="splash"><h1>4NMNN</h1><p>Sistema Inteligente Multi-Módulo</p><div class="cr"><small>DESARROLLADO POR</small><b>ZARATE</b></div><button class="go" type="button" onclick="start()">Iniciar Aplicación</button></div>
+<div id="app">
+<div id="announcer" class="visually-hidden" role="status" aria-live="polite"></div>
+<header><div><b>4NMNN</b><small>by ZARATE</small></div><button id="vb" type="button" onclick="tv()" aria-pressed="true">Voz ON</button></header>
+<div class="bar"><div role="status" aria-live="polite"><span class="dot" id="dot" aria-hidden="true"></span><span id="stx">Sistema en orden</span></div><span id="upd">--</span></div>
+
+<div class="pg on" id="p-mon">
+<div class="grid">
+<div class="card sc"><small>pH</small><div class="v" id="vph">7.2</div><div class="st ok" id="sph">Normal</div></div>
+<div class="card sc"><small>Turbidez NTU</small><div class="v" id="vtb">0.3</div><div class="st ok" id="stb">Normal</div></div>
+<div class="card sc"><small>Nivel %</small><div class="v" id="vlv">65</div><div class="st ok" id="slv">Normal</div></div></div>
+<button class="btn" type="button" onclick="diag()">Monitorear Filtro y Diagnosticar</button>
+<button class="btn s" type="button" onclick="rnd()">Simular nuevos datos</button>
+<div class="card sim"><h3>Simulador de sensores</h3>
+<label>pH<input type="range" id="rph" min="4" max="10" step=".1" value="7.2" oninput="sim()"><span id="tph">7.2</span></label>
+<label>Turb.<input type="range" id="rtb" min="0" max="15" step=".1" value="0.3" oninput="sim()"><span id="ttb">0.3</span></label>
+<label>Nivel<input type="range" id="rlv" min="0" max="100" step="1" value="65" oninput="sim()"><span id="tlv">65</span></label></div></div>
+
+<div class="pg" id="p-chat"><div class="chat"><div id="msgs"></div><div class="q" id="qr" hidden></div>
+<form id="chat-form" class="ia" autocomplete="off">
+<label for="ci" class="visually-hidden">Escribe tu pregunta</label>
+<input id="ci" name="q" type="text" maxlength="500" autocomplete="off" placeholder="Pregunta lo que quieras o calcula (12*5)...">
+<button type="submit">Enviar</button>
+</form></div></div>
+
+<div class="pg" id="p-mnt"><h2>Mantenimiento</h2><div id="ml"></div>
+<div class="card"><h3>Registro de limpieza</h3><p>Última limpieza: <b id="lc">Hace 3 días</b></p></div>
+<button class="btn" type="button" onclick="clean()">Ejecutar Retrolavado</button><!-- 4NMNN VERSION 1: SISTEMA DE PRUEBAS AUTOMATICAS -->
+<section id="4nmnn-test-panel" aria-label="Pruebas automáticas de 4NMNN" style="margin:18px auto;max-width:980px;padding:14px;border:1px solid rgba(0,180,210,.45);border-radius:16px;background:rgba(10,35,52,.96);color:#eef8ff;font-family:inherit;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+    <div>
+      <h3 style="margin:0 0 4px;font-size:17px;">Centro de pruebas de 4NMNN</h3>
+      <p style="margin:0;color:#b8cbd5;font-size:13px;">Comprueba si las respuestas corresponden a la pregunta.</p>
+    </div>
+    <button id="4nmnn-run-tests" type="button" style="border:0;border-radius:14px;padding:10px 14px;background:#16b8d4;color:white;font-weight:700;cursor:pointer;">Ejecutar pruebas</button>
+  </div>
+  <div id="4nmnn-test-summary" style="margin-top:12px;font-size:14px;color:#d8edf5;">Todavía no se han ejecutado pruebas.</div>
+  <div id="4nmnn-test-results" style="margin-top:10px;display:grid;gap:8px;"></div>
+</section>
+
+</div>
+
+<div class="pg" id="p-inf"><h2>Sobre el Proyecto</h2>
+<div class="card"><h3>Filtro Inteligente de Agua</h3><p>Sistema de demostración que simula monitoreo y explica el tratamiento del agua; no certifica potabilidad.</p></div>
+<div class="card"><h3>Componentes</h3><ul><li>Arduino / ESP32</li><li>Sensores de pH, turbidez y nivel</li><li>Bomba 12V y válvulas solenoide</li><li>Filtros de sedimentos, carbón, UF y UV</li></ul></div>
+<div class="card"><h3>Guía rápida</h3><ul><li>Calcula: <code>(100+50)/3</code>, <code>raíz de 81</code>, <code>20% de 350</code></li><li>Convierte: <code>30 celsius a fahrenheit</code></li><li>Pregunta: capitales, ciencia, salud, chistes, datos curiosos</li><li>Di «más» u «otro» para seguir con el tema</li></ul></div>
+<div class="card"><h3>4NMNN por ZARATE</h3><p>Asistente creado, diseñado y programado 100% por <b>ZARATE</b>.</p><p>Versión 5.1 Inteligente · © 2026 ZARATE · Todos los derechos reservados</p></div></div>
+
+<footer>© 2026 4NMNN · by <b>ZARATE</b> · Todos los derechos reservados</footer>
+<nav aria-label="Navegación principal"><button class="on" id="n-mon" type="button" onclick="pg('mon')" aria-current="page">Monitoreo</button><button id="n-chat" type="button" onclick="pg('chat')">Asistente</button><button id="n-mnt" type="button" onclick="pg('mnt')">Mantenimiento</button><button id="n-inf" type="button" onclick="pg('inf')">Info</button></nav>
+</div>
+
+<!-- 4NMNN VERSION 1: PROTECCIÓN FINAL DE RESPUESTAS Y SIN SUGERENCIAS -->
+
+
+<script src="app.js"></script>
+</body>
+</html>
