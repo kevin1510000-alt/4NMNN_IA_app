@@ -1,0 +1,15 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "4NMNN IA",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "4NMNN IA",
+  "start_url": "/",
+  "theme_color": "#000000",
+  "share_target": {
+    "method": "GET"
+  },
+  "description": "Sistema inteligente de monitoreo de filtro de agua"
+}
